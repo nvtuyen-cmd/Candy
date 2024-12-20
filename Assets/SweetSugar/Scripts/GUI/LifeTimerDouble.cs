@@ -10,7 +10,6 @@
 // // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // // THE SOFTWARE.
 
-using SweetSugar.Scripts.Localization;
 using TMPro;
 using UnityEngine;
 
@@ -33,7 +32,6 @@ namespace SweetSugar.Scripts.GUI
         // Update is called once per frame
         void Update()
         {
-            textDest.text = "+1" + LocalizationManager.GetText(0, "life after") + textSource.text;
         }
     }
 }

@@ -154,7 +154,6 @@ namespace SweetSugar.Scripts.GUI
 
             if (name == "FailedDescription")
             {
-                txt.text = "" + LevelData.THIS.GetTargetCounters().First(i => !i.IsTotalTargetReached()).targetLevel.GetFailedDescription();
             }
 
 

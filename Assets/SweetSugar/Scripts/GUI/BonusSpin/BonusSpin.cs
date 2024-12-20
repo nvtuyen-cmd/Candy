@@ -14,7 +14,6 @@ using System.Collections;
 using System.Linq;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.GUI.Boost;
-using SweetSugar.Scripts.Localization;
 using SweetSugar.Scripts.System;
 using TMPro;
 using UnityEngine;
@@ -59,7 +58,6 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
             }
             else
             {
-                priceButton.text = LocalizationManager.GetText(82, "Free");
                 coins.SetActive(false);
             }
         }
@@ -69,26 +67,7 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
         /// </summary>
         public void BuyStartSpin()
         {
-            transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = false;
-            if (priceButton.text == LocalizationManager.GetText(82, "Free"))
-            {
-                StartSpin();
-
-                InitScript.Instance.currentReward = RewardsType.FreeAction;
-
-                return;
-            }
-
-            if (InitScript.Gems >= int.Parse(priceButton.text))
-            {
-                InitScript.Instance.SpendGems(int.Parse(priceButton.text));
-                StartSpin();
-            }
-            else
-            {
-                transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = true;
-                MenuReference.THIS.GemsShop.gameObject.SetActive(true);
-            }
+            
         }
 
         public void StartSpin()

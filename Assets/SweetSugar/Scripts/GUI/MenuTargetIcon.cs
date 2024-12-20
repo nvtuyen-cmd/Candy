@@ -40,7 +40,6 @@ namespace SweetSugar.Scripts.GUI
         var levelData = new LevelData(Application.isPlaying, LevelManager.THIS.currentLevel);
         levelData = LoadingManager.LoadForPlay(PlayerPrefs.GetInt("OpenLevel"));
         var list = levelData.GetTargetSprites();
-        description.text = levelData.GetTargetContainersForUI().First().targetLevel.GetDescription();
         for (int i = 0; i < list.Length; i++)
         {
             images[i].sprite = list[i];

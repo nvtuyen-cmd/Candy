@@ -10,7 +10,6 @@
 // // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // // THE SOFTWARE.
 
-using SweetSugar.Scripts.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,7 +35,6 @@ namespace SweetSugar.Scripts.GUI
 
         private void OnEnable()
         {
-            textday.text = day.ToString() + " " + LocalizationManager.GetText(15, "DAY");
         }
 
         public void SetDayAhead()

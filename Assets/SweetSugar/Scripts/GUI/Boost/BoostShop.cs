@@ -14,7 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-using SweetSugar.Scripts.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,10 +66,8 @@ namespace SweetSugar.Scripts.GUI.Boost
             gameObject.SetActive(true);
             // icon.sprite = boost.icon;
             boost.boostIconObject.SetActive(true);
-            description.text = boost.GetDescription();
             transform.Find("Image/BuyBoost/Count").GetComponent<TextMeshProUGUI>().text = "x" + boost.count;
             transform.Find("Image/BuyBoost/Price").GetComponent<TextMeshProUGUI>().text = "" + boost.GemPrices;
-            boostName.text = boost.GetName();
             callback = callbackL;
         }
 
@@ -99,14 +96,6 @@ namespace SweetSugar.Scripts.GUI.Boost
         public int GemPrices;
         public GameObject boostIconObject;
 
-        public string GetDescription()
-        {
-            return LocalizationManager.GetText(descriptionLocalizationRefrence, description);
-        }
-
-        public string GetName()
-        {
-            return LocalizationManager.GetText(nameLocalizationReference, name);
-        }
+        
     }
 }

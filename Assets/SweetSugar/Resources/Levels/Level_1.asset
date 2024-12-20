@@ -2200,13 +2200,6 @@ MonoBehaviour:
       switchSublevelNoMatch: 0
     target:
       name: SugarSquare
-      localization:
-        description:
-          text: Destroy sugar squares
-          index: 59
-        failed:
-          text: You didn't destroy the sugar squares
-          index: 60
       collectAction: 0
       setCount: 1
       CanSwithSublevel: 0
@@ -2242,13 +2235,6 @@ MonoBehaviour:
       TargetGui: {fileID: 0}
       targetLevel:
         name: 
-        localization:
-          description:
-            text: 
-            index: 0
-          failed:
-            text: 
-            index: 0
         collectAction: 0
         setCount: 0
         CanSwithSublevel: 0
@@ -2266,13 +2252,6 @@ MonoBehaviour:
       TargetGui: {fileID: 0}
       targetLevel:
         name: 
-        localization:
-          description:
-            text: 
-            index: 0
-          failed:
-            text: 
-            index: 0
         collectAction: 0
         setCount: 0
         CanSwithSublevel: 0

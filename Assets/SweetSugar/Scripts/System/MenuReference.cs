@@ -30,7 +30,6 @@ namespace SweetSugar.Scripts.System
         public GameObject LiveShop;
         public GameObject GemsShop;
         public GameObject Reward;
-        public GameObject Daily;
         public GameObject Tutorials;
         public GameObject Settings;
         private void Awake()
@@ -40,10 +39,7 @@ namespace SweetSugar.Scripts.System
 
         }
 
-        private void Start()
-        {
-            ShowDailyReward();
-        }
+        
 
         public void HideAll()
         {
@@ -55,22 +51,6 @@ namespace SweetSugar.Scripts.System
             }
         }
 
-        private static void ShowDailyReward()
-        {
-           
-
-            var DateReward = PlayerPrefs.GetString("DateReward", default(DateTime).ToString());
-            var dateTimeReward = DateTime.Parse(DateReward);
-
-            if (LevelManager.GetGameStatus() == GameState.Map)
-            {
-                if (DateReward == "" || DateReward == default(DateTime).ToString())
-                    InitScript.Instance.DailyMenu.SetActive(true);
-                else
-                {
-                    
-                }
-            }
-        }
+        
     }
 }

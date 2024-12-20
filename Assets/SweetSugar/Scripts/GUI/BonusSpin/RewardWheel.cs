@@ -12,7 +12,6 @@
 
 using SweetSugar.Scriptable.Rewards;
 using SweetSugar.Scripts.GUI.Boost;
-using SweetSugar.Scripts.Localization;
 using UnityEngine;
 
 namespace SweetSugar.Scripts.GUI.BonusSpin
@@ -27,10 +26,5 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
         public int count;
         public string description;
         public int descriptionLocalizationRefrence;
-        public string GetDescription()
-        {
-            return LocalizationManager.GetText(descriptionLocalizationRefrence, description);
-        }
-
     }
 }

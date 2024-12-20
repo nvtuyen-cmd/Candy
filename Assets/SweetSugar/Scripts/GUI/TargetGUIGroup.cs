@@ -90,7 +90,6 @@ namespace SweetSugar.Scripts.GUI
         void SetTargets()
         {
             LevelData levelData = LevelManager.THIS.levelData;
-            SetDescription(LevelManager.THIS.levelData.GetFirstTarget(true)?.GetDescription());
             var targets = levelData.GetTargetContainersForUI();
             if (transform.parent.parent.parent.name == "PreFailed")
             {

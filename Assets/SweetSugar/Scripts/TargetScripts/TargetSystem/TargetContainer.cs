@@ -13,7 +13,6 @@
 using System;
 using System.Collections.Generic;
 using Malee;
-using SweetSugar.Scripts.Localization;
 using SweetSugar.Scripts.TargetScripts.TargetEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -28,7 +27,6 @@ namespace SweetSugar.Scripts.TargetScripts.TargetSystem
     {
         public string name = "";
 
-        public LocalizationIndexFolder localization;
         public CollectingTypes collectAction;
         public SetCount setCount;
         [Tooltip("Can switch sublevel if target not complete")]
@@ -43,24 +41,10 @@ namespace SweetSugar.Scripts.TargetScripts.TargetSystem
             return other;
         }
 
-        public string GetDescription()
-        {
-            return LocalizationManager.GetText(localization.description.index, localization.description.text);
-        }
-
-        public string GetFailedDescription()
-        {
-            return LocalizationManager.GetText(localization.failed.index, localization.failed.text);
-        }
+        
     }
 
-    [Serializable]
-    public class LocalizationIndexFolder
-    {
-        [Tooltip("Default text")]
-        public LocalizationIndex description;
-        public LocalizationIndex failed;
-    }
+    
     
     public enum CollectingTypes
     {

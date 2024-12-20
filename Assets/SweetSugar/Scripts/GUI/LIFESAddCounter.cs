@@ -12,7 +12,6 @@
 
 using System;
 using SweetSugar.Scripts.Core;
-using SweetSugar.Scripts.Localization;
 using SweetSugar.Scripts.System;
 using TMPro;
 using UnityEngine;
@@ -94,7 +93,6 @@ namespace SweetSugar.Scripts.GUI
                 else
                 {
                     //text.text = "   Full";
-                    text.text = LocalizationManager.GetText(38, "FULL");
                 }
             }
         }

@@ -11,7 +11,6 @@
 // // THE SOFTWARE.
 
 using SweetSugar.Scripts.Core;
-using SweetSugar.Scripts.Localization;
 using TMPro;
 using UnityEngine;
 
