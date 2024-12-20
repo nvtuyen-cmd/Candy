@@ -580,6 +580,7 @@ namespace SweetSugar.Scripts.Core
         private void setNumbers()
         {
         }
+
         private void Awake()
         {
             THIS = this;
@@ -597,13 +598,9 @@ namespace SweetSugar.Scripts.Core
             DebugSettings = Resources.Load<DebugSettings>("Scriptable/DebugSettings");
             AdditionalSettings = Resources.Load<AdditionalSettings>("Scriptable/AdditionalSettings");
 
-#if UNITY_INAPPS
-            gameObject.AddComponent<UnityInAppsIntegration>();
-            enableInApps = true;
-#else
-        enableInApps = false;
 
-#endif
+            enableInApps = false;
+
 
 //        if (!THIS.enableInApps)
 //            GameObject.Find("CanvasMap/SafeArea/Gems").gameObject.SetActive(false);

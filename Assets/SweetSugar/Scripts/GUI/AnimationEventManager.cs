@@ -429,14 +429,6 @@ namespace SweetSugar.Scripts.GUI
             var i = pack.transform.GetSiblingIndex();
             InitScript.waitedPurchaseGems =
                 int.Parse(pack.transform.Find("Count").GetComponent<TextMeshProUGUI>().text.Replace("x ", ""));
-#if UNITY_WEBPLAYER || UNITY_WEBGL
-            InitScript.Instance.PurchaseSucceded();
-            CloseMenu();
-            return;
-#endif
-#if UNITY_INAPPS
-            UnityInAppsIntegration.THIS.BuyProductID(LevelManager.THIS.InAppIDs[i]);
-#endif
 
             CloseMenu();
         }
