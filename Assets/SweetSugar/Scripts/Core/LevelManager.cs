@@ -386,7 +386,6 @@ namespace SweetSugar.Scripts.Core
                         DOVirtual.DelayedCall(3, () =>
                         {
                             var preFailedGameObject = MenuReference.THIS.PreFailed.gameObject;
-                            preFailedGameObject.GetComponent<PreFailed>().SetFailed();
                             preFailedGameObject.SetActive(true);
                         });
                         break;
@@ -394,7 +393,6 @@ namespace SweetSugar.Scripts.Core
                         DOVirtual.DelayedCall(0.3f, () =>
                         {
                             var preFailedGameObject = MenuReference.THIS.PreFailed.gameObject;
-                            preFailedGameObject.GetComponent<PreFailed>().SetBombFailed();
                             preFailedGameObject.SetActive(true);
                         });
                         break;
@@ -415,7 +413,6 @@ namespace SweetSugar.Scripts.Core
 
                         if (CrosssceneData.passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
                         {
-                            
                         }
 
                         break;
@@ -547,8 +544,6 @@ namespace SweetSugar.Scripts.Core
                 GetComponent<Camera>().orthographicSize = 4;
                 MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = false;
                 MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = true;
-                Level.transform.Find("Canvas").GetComponent<GraphicRaycaster>().enabled = false;
-                Level.transform.Find("Canvas").GetComponent<GraphicRaycaster>().enabled = true;
             }
 
             Camera.main.GetComponent<MapCamera>().enabled = enable;
@@ -722,13 +717,8 @@ namespace SweetSugar.Scripts.Core
         //game start
         private void GameStart()
         {
-            if (CurrentSubLevel - 1 == 0)
-                MenuReference.THIS.PrePlay.gameObject.SetActive(true);
-            else
-            {
-                OnSublevelChanged?.Invoke();
-                gameStatus = GameState.Playing;
-            }
+            OnSublevelChanged?.Invoke();
+            gameStatus = GameState.Playing;
         }
 
         /// Cloud effect animation for different direction levels

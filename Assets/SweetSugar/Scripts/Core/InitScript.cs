@@ -153,10 +153,6 @@ namespace SweetSugar.Scripts.Core
             Gems += count;
             PlayerPrefs.SetInt("Gems", Gems);
             PlayerPrefs.Save();
-#if PLAYFAB || GAMESPARKS || EPSILON
-            NetworkManager.currencyManager.IncBalance(count);
-#endif
-
         }
 
         public void SpendGems(int count)
@@ -165,10 +161,6 @@ namespace SweetSugar.Scripts.Core
             Gems -= count;
             PlayerPrefs.SetInt("Gems", Gems);
             PlayerPrefs.Save();
-#if PLAYFAB || GAMESPARKS || EPSILON
-            NetworkManager.currencyManager.DecBalance(count);
-#endif
-
         }
 
 
@@ -276,13 +268,6 @@ namespace SweetSugar.Scripts.Core
 
         static void ShowLeadboard(int levelNumber)
         {
-#if EPSILON
-            var leadboardList = FindObjectsOfType<LeadboardManager>();
-            foreach (var obj in leadboardList)
-            {
-                obj.levelNumber = levelNumber;
-            }
-#endif
         }
         
         void OnEnable()

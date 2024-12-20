@@ -457,13 +457,11 @@ namespace SweetSugar.Scripts.GUI
 
         public void GoOnFailed()
         {
-            GetComponent<PreFailed>().Continue();
         }
 
         [UsedImplicitly]
         public void GiveUp()
         {
-            GetComponent<PreFailed>().Close();
         }
 
         void ShowGameOver()
