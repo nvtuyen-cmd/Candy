@@ -549,10 +549,6 @@ namespace SweetSugar.Scripts.Editor
             }
             else if (selected == 6)
             {
-                if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
-                    GUIRate();
-                else
                     GUIShowWarning();
             }
             else if (selected == 7)
@@ -609,29 +605,6 @@ namespace SweetSugar.Scripts.Editor
             GUILayout.Label("Please open scene - game ( Assets/SweetSugar/Scenes/game.unity )", EditorStyles.boldLabel,
                 GUILayout.Width(600));
         }
-
-
-        #region GUIRate
-
-        private void GUIRate()
-        {
-            InitScript initscript = Camera.main.GetComponent<InitScript>();
-
-            GUILayout.Label("Rate settings:", EditorStyles.boldLabel, GUILayout.Width(150));
-            GUILayout.Space(10);
-            GUILayout.BeginHorizontal();
-            initscript.ShowRateEvery = EditorGUILayout.IntField("Show Rate every ", initscript.ShowRateEvery,
-                GUILayout.Width(220), GUILayout.MaxWidth(220));
-            GUILayout.Label(" level (0 = disable)", EditorStyles.label, GUILayout.Width(150));
-            GUILayout.EndHorizontal();
-            initscript.RateURL =
-                EditorGUILayout.TextField("URL", initscript.RateURL, GUILayout.Width(220), GUILayout.MaxWidth(220));
-            initscript.RateURLIOS = EditorGUILayout.TextField("URL iOS", initscript.RateURLIOS, GUILayout.Width(220),
-                GUILayout.MaxWidth(220));
-        }
-
-        #endregion
-
         #region GUIDialogs
 
         private void GUIDialogs()
@@ -1311,58 +1284,7 @@ namespace SweetSugar.Scripts.Editor
             boost_show = EditorGUILayout.Foldout(boost_show, "Boosts shop settings:");
             if (boost_show)
             {
-                BoostShop bs = MenuReference.BoostShop.GetComponent<BoostShop>();
-                List<BoostProduct> bp = bs.boostProducts;
-                foreach (BoostProduct item in bp)
-                {
-                    GUILayout.BeginVertical();
-                    {
-                        item.boostType = (BoostType) EditorGUILayout.EnumPopup(item.boostType, GUILayout.Width(93));
-
-                        GUILayout.BeginHorizontal();
-                        {
-                            GUILayout.Label("Description");
-                            item.description =
-                                EditorGUILayout.TextField("", item.description, GUILayout.Width(400),
-                                    GUILayout.MaxWidth(400));
-                        }
-                        GUILayout.EndHorizontal();
-                        GUILayout.BeginHorizontal();
-                        {
-                            GUILayout.Label("Localization ref", GUILayout.Width(110));
-                            item.descriptionLocalizationRefrence =
-                                EditorGUILayout.IntField("", item.descriptionLocalizationRefrence, GUILayout.Width(30),
-                                    GUILayout.MaxWidth(30));
-                        }
-                        GUILayout.EndHorizontal();
-                        GUILayout.BeginHorizontal();
-                        {
-                            GUILayout.Label(item.icon.texture, GUILayout.Width(50), GUILayout.Height(50));
-                            GUILayout.BeginVertical();
-                            {
-                                GUILayout.BeginHorizontal();
-                                {
-                                    GUILayout.Label("Count", EditorStyles.label, GUILayout.Width(80));
-                                    GUILayout.Label("Price(gem)", EditorStyles.label, GUILayout.Width(80));
-                                }
-                                GUILayout.EndHorizontal();
-
-                                GUILayout.BeginHorizontal();
-                                {
-                                    item.count = EditorGUILayout.IntField("", item.count, GUILayout.Width(80),
-                                        GUILayout.MaxWidth(80));
-                                    item.GemPrices =
-                                        EditorGUILayout.IntField("", item.GemPrices, GUILayout.Width(80),
-                                            GUILayout.MaxWidth(80));
-                                }
-                                GUILayout.EndHorizontal();
-                            }
-                            GUILayout.EndVertical();
-                        }
-                        GUILayout.EndHorizontal();
-                    }
-                    GUILayout.EndVertical();
-                }
+                
             }
         }
 
@@ -1378,26 +1300,6 @@ namespace SweetSugar.Scripts.Editor
             lm.gemsProducts[2].price = 9.99f;
             lm.gemsProducts[3].count = 150;
             lm.gemsProducts[3].price = 14.99f;
-
-            BoostShop bs = MenuReference.BoostShop.GetComponent<BoostShop>();
-            bs.boostProducts[0].description = "Gives you the 5 extra moves";
-            bs.boostProducts[1].description = "Place this special item in game";
-            bs.boostProducts[2].description = "Place this special item in game";
-            bs.boostProducts[3].description = "Gives you the 30 extra seconds";
-            bs.boostProducts[4].description = "Destroy the item";
-            bs.boostProducts[5].description = "Place this special item in game";
-            bs.boostProducts[6].description = "Switch to item that don't match";
-            bs.boostProducts[7].description = "Replace the near items color";
-
-            for (int i = 0; i < 8; i++)
-            {
-                bs.boostProducts[i].count = 3;
-
-                bs.boostProducts[i].GemPrices = 5;
-            }
-
-            EditorUtility.SetDirty(lm);
-            EditorUtility.SetDirty(bs);
         }
 
         #endregion

@@ -64,10 +64,7 @@ namespace SweetSugar.Scripts.Core
         //EDITOR: how often to show the "Rate us on the store" popup
         public int ShowRateEvery;
 
-        //EDITOR: rate url
-        public string RateURL;
 
-        public string RateURLIOS;
 
         //EDITOR: amount for rewarded ads
         public int rewardedGems = 5;
@@ -75,8 +72,6 @@ namespace SweetSugar.Scripts.Core
         //EDITOR: should player lose a life for every passed level
         public bool losingLifeEveryGame;
 
-        //daily reward popup reference
-        public GameObject DailyMenu;
 
         // Use this for initialization
         void Awake()
@@ -102,9 +97,6 @@ namespace SweetSugar.Scripts.Core
                 PlayerPrefs.Save();
             }
 
-            var g = MenuReference.THIS.Reward.gameObject;
-            g.SetActive(true);
-            g.SetActive(false);
             if (CrosssceneData.totalLevels == 0)
                 CrosssceneData.totalLevels = LoadingManager.GetLastLevelNum();
             currentReward = RewardsType.NONE;
@@ -124,18 +116,13 @@ namespace SweetSugar.Scripts.Core
 
         public void ShowReward()
         {
-            var reward = MenuReference.THIS.Reward.GetComponent<RewardIcon>();
             if (currentReward == RewardsType.GetGems)
             {
                 ShowGemsReward(rewardedGems);
-                MenuReference.THIS.GemsShop.GetComponent<AnimationEventManager>().CloseMenu();
             }
             else if (currentReward == RewardsType.GetLifes)
             {
-                reward.SetIconSprite(1);
-                reward.gameObject.SetActive(true);
                 RestoreLifes();
-                MenuReference.THIS.LiveShop.GetComponent<AnimationEventManager>().CloseMenu();
             }
             else if (currentReward == RewardsType.GetGoOn)
             {
@@ -150,9 +137,6 @@ namespace SweetSugar.Scripts.Core
 
         public void ShowGemsReward(int amount)
         {
-            var reward = MenuReference.THIS.Reward.GetComponent<RewardIcon>();
-            reward.SetIconSprite(0);
-            reward.gameObject.SetActive(true);
             AddGems(amount);
         }
 

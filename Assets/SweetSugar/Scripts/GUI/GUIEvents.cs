@@ -35,8 +35,6 @@ namespace SweetSugar.Scripts.GUI
 		public void Settings () {
 			SoundBase.Instance.GetComponent<AudioSource> ().PlayOneShot (SoundBase.Instance.click);
 
-			MenuReference.THIS.Settings.gameObject.SetActive (true);
-
 		}
 
 		public void Play () {

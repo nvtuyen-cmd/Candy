@@ -134,18 +134,6 @@ namespace SweetSugar.Scripts.GUI
         /// <summary>
         /// Open rate store
         /// </summary>
-        public void GoRate()
-        {
-#if UNITY_ANDROID
-            Application.OpenURL(InitScript.Instance.RateURL);
-#elif UNITY_IOS
-        Application.OpenURL(InitScript.Instance.RateURLIOS);
-#endif
-            PlayerPrefs.SetInt("Rated", 1);
-            PlayerPrefs.Save();
-            CloseMenu();
-        }
-
         void OnDisable()
         {
             if (transform.Find("Image/Video") != null)
@@ -278,8 +266,6 @@ namespace SweetSugar.Scripts.GUI
         /// </summary>
         public void Info()
         {
-            MenuReference.THIS.Tutorials.gameObject.SetActive(false);
-            MenuReference.THIS.Tutorials.gameObject.SetActive(true);
             OpneMenu(gameObject);
         }
 
@@ -419,7 +405,6 @@ namespace SweetSugar.Scripts.GUI
         public void BuyGems()
         {
             SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
-            MenuReference.THIS.GemsShop.gameObject.SetActive(true);
         }
 
         [UsedImplicitly]
@@ -442,8 +427,6 @@ namespace SweetSugar.Scripts.GUI
         public void BuyLifeShop()
         {
             SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
-            if (InitScript.lifes < InitScript.Instance.CapOfLife)
-                MenuReference.THIS.LiveShop.gameObject.SetActive(true);
         }
 
         public void BuyLife(GameObject button)
@@ -455,10 +438,6 @@ namespace SweetSugar.Scripts.GUI
                     .text));
                 InitScript.Instance.RestoreLifes();
                 CloseMenu();
-            }
-            else
-            {
-                MenuReference.THIS.GemsShop.gameObject.SetActive(true);
             }
         }
 
@@ -472,10 +451,6 @@ namespace SweetSugar.Scripts.GUI
                     button.GetComponent<Button>().interactable = false;
                     GoOnFailed();
                     GetComponent<Animation>()["bannerFailed"].speed = 1;
-                }
-                else
-                {
-                    MenuReference.THIS.GemsShop.gameObject.SetActive(true);
                 }
             }
         }

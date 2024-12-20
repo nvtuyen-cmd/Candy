@@ -25,13 +25,6 @@ namespace SweetSugar.Scripts.System
         public GameObject MenuComplete;
         public GameObject MenuFailed;
         public GameObject PreFailed;
-        public GameObject BonusSpin;
-        public GameObject BoostShop;
-        public GameObject LiveShop;
-        public GameObject GemsShop;
-        public GameObject Reward;
-        public GameObject Tutorials;
-        public GameObject Settings;
         private void Awake()
         {
             THIS = this;

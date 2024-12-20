@@ -40,16 +40,6 @@ namespace SweetSugar.Scripts.GUI.Boost
         {
             Lock = transform.Find("Lock")?.gameObject;
             Indicator = transform.Find("Indicator")?.gameObject;
-            if (MenuReference.THIS != null)
-            {
-                BoostShop = MenuReference.THIS.BoostShop.gameObject.GetComponent<BoostShop>();
-            }
-            //		if (check != null) return;
-            //		check = Instantiate(Resources.Load("Prefabs/Check")) as GameObject;
-            //		check.transform.SetParent(transform.Find("Indicator"));
-            //		check.transform.localScale = Vector3.one;
-            //		check.GetComponent<RectTransform>().anchoredPosition = new Vector2(2,-67);
-            //		check.SetActive(false);
         }
 
         private void OnEnable()
