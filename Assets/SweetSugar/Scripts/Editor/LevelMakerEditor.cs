@@ -1173,9 +1173,6 @@ namespace SweetSugar.Scripts.Editor
                 GUILayout.EndHorizontal();
                 GUILayout.Space(10);
 
-
-                lm.lifeShop.CostIfRefill = EditorGUILayout.IntField("Cost of refilling lifes", lm.lifeShop.CostIfRefill,
-                    GUILayout.Width(200), GUILayout.MaxWidth(200));
                 GUILayout.EndVertical();
                 GUILayout.EndHorizontal();
             }
@@ -1251,7 +1248,6 @@ namespace SweetSugar.Scripts.Editor
             initscript.TotalTimeForRestLifeHours = 0;
             initscript.TotalTimeForRestLifeMin = 15;
             initscript.TotalTimeForRestLifeSec = 0;
-            lm.lifeShop.CostIfRefill = 12;
             lm.FailedCost = 12;
             lm.ExtraFailedMoves = 5;
             lm.ExtraFailedSecs = 30;

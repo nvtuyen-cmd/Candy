@@ -65,8 +65,6 @@ namespace SweetSugar.Scripts.Core
         public static LevelManager THIS;
 
         //life shop reference
-        public LifeShop lifeShop;
-
         //true if Unity in-apps is enable and imported
         public bool enableInApps;
 
