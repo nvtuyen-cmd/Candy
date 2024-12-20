@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1545849743
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7f5048257fb52e1d6b4a18e82570b814
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 767148d2cba1a92a15442f2b767884c0
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 7f5048257fb52e1d6b4a18e82570b814
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/GameObject.prefab
+Dependencies: []
