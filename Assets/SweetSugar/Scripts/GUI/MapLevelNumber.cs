@@ -21,7 +21,6 @@ namespace SweetSugar.Scripts.GUI
     public class MapLevelNumber : MonoBehaviour
     {
         private GameObject canvasMap;
-        MapLevel mapLevel;
         Transform pin;
         // Use this for initialization
         void OnEnable()

@@ -66,11 +66,7 @@ namespace SweetSugar.Scripts.GUI.Avatar
 		}
 
 		void SetPosition(int lvl) {
-			var level = LevelsMap._instance.GetLevel (lvl);
-			if (level != null)
-			{
-				transform.position = level.transform.position - GetFreePositionForFriend(level.transform.position);
-			}
+			
 		}
 
 		Vector3 GetFreePositionForFriend(Vector2 pos)

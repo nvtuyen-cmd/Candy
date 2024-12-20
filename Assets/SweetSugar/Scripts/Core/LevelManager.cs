@@ -581,32 +581,7 @@ namespace SweetSugar.Scripts.Core
 
         private void setNumbers()
         {
-            var numberObject = Resources.Load<GameObject>("Prefabs/Number");
-            var parentObj = FindObjectOfType<Path>();
-            StartCoroutine(SetLevelNumberToMapObject(numberObject, parentObj.Waypoints));
         }
-
-        private IEnumerator SetLevelNumberToMapObject(GameObject numberObj, List<Transform> levelParentObject)
-        {
-            yield return new WaitForSeconds(0.01f);
-            int counter = 0;
-            foreach (var t in levelParentObject)
-            {
-                counter++;
-                if (Camera.main.GetComponent<MapCamera>().isActiveAndEnabled)
-                {
-                    var obj = Instantiate(numberObj, t.parent, true);
-                    obj.GetComponent<Canvas>().worldCamera = Camera.main;
-                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + counter;
-                    var rt = obj.GetComponent<RectTransform>();
-                    rt.anchoredPosition = new Vector2(0.011f, 0.235f); /*new Rect(, , );*/
-                    rt.sizeDelta = new Vector2(30.25f, 28.47f);
-                }
-                else
-                    break;
-            }
-        }
-
         private void Awake()
         {
             THIS = this;
