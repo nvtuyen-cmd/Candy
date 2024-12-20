@@ -38,7 +38,6 @@ namespace SweetSugar.Scripts.MapScripts
         {
             Debug.Log("Subscribe to events.");
             LevelsMap.LevelSelected += OnLevelSelected;
-            LevelsMap.LevelReached += OnLevelReached;
             //            YesButton.Click += OnYesButtonClick;
             //            NoButton.Click += OnNoButtonClick;
         }
@@ -47,7 +46,6 @@ namespace SweetSugar.Scripts.MapScripts
         {
             Debug.Log("Unsubscribe from events.");
             LevelsMap.LevelSelected -= OnLevelSelected;
-            LevelsMap.LevelReached -= OnLevelReached;
             //           YesButton.Click -= OnYesButtonClick;
             //           NoButton.Click -= OnNoButtonClick;
         }

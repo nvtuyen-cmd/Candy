@@ -645,10 +645,8 @@ namespace SweetSugar.Scripts.Editor
 //        ShowMenuButton("Pause", "MenuPause");
             ShowMenuButton("Boost Shop", "BoostShop");
             ShowMenuButton("Live Shop", "LiveShop");
-            ShowMenuButton("Gems Shop", "GemsShop");
 //        ShowMenuButton("Boost Info", "BoostInfo");
             ShowMenuButton("Settings", "Settings");
-            ShowMenuButton("Reward", "Reward");
 //        ShowMenuButton("Tutorial", "Tutorial");
         }
 

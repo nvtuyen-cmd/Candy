@@ -26,7 +26,6 @@ namespace SweetSugar.Scripts.GUI
         TextMeshProUGUI text;
         static float TimeLeft;
         float TotalTimeForRestLife = 15f * 60;  //8 minutes for restore life
-        bool startTimer;
         DateTime templateTime;
         // Use this for initialization
         void Start()
@@ -106,8 +105,6 @@ namespace SweetSugar.Scripts.GUI
         {
             if (!focus)
                 SaveExitTime();
-            else
-                startTimer = false;
         }
 
         private static void SaveExitTime()

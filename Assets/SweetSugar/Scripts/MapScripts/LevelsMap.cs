@@ -75,7 +75,6 @@ namespace SweetSugar.Scripts.MapScripts
         #region Events
 
         public static event EventHandler<LevelReachedEventArgs> LevelSelected;
-        public static event EventHandler<LevelReachedEventArgs> LevelReached;
 
         #endregion
 
@@ -186,7 +185,6 @@ namespace SweetSugar.Scripts.MapScripts
         public void SetStarsEnabled(bool bEnabled)
         {
             StarsEnabled = bEnabled;
-            int starsCount = 0;
         }
 
         public void SetStarsType(StarsType starsType)

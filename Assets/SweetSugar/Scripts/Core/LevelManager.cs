@@ -318,8 +318,6 @@ namespace SweetSugar.Scripts.Core
         //true if search of matches has started
         public bool findMatchesStarted;
 
-        //true if need to check matches again
-        private bool checkMatchesAgain;
 
         //if true - start the level avoind the map for debug
         public bool testByPlay;
@@ -668,8 +666,6 @@ namespace SweetSugar.Scripts.Core
             foreach (var item in fieldBoards)
             {
                 var _field = item.gameObject;
-                _field.transform.SetParent(FieldsParent?.transform);
-                _field.transform.position = fieldPos + Vector3.right * (i * 15);
                 var fboard = _field.GetComponent<FieldBoard>();
 
                 fboard.CreateField(colorGenerator);
@@ -1301,8 +1297,6 @@ namespace SweetSugar.Scripts.Core
         {
             if (!findMatchesStarted)
                 StartCoroutine(FallingDown());
-            else
-                checkMatchesAgain = true;
         }
 
         internal List<GameBlocker> _stopFall = new List<GameBlocker>();
@@ -1342,7 +1336,6 @@ namespace SweetSugar.Scripts.Core
             // while (true)
             {
                 destLoopIterations++;
-                checkMatchesAgain = false;
 
                 var destroyItemsListed = field.GetItems().Where(i => i.destroyNext).ToList();
                 if (destroyItemsListed.Count > 0)
@@ -1367,7 +1360,6 @@ namespace SweetSugar.Scripts.Core
             //CheckItemsPositions();
             DragBlocked = false;
             findMatchesStarted = false;
-            checkMatchesAgain = false;
             if (gameStatus == GameState.Playing)
                 StartCoroutine(AI.THIS.CheckPossibleCombines());
 
