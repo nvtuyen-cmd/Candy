@@ -416,9 +416,7 @@ namespace SweetSugar.Scripts.Core
 
                         if (CrosssceneData.passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
                         {
-                            if (CrosssceneData.passLevelCounter % InitScript.Instance.ShowRateEvery == 0 &&
-                                InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
-                                InitScript.Instance.ShowRate();
+                            
                         }
 
                         break;

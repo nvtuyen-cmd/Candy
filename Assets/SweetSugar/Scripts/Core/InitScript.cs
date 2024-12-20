@@ -71,9 +71,6 @@ namespace SweetSugar.Scripts.Core
 
         public string RateURLIOS;
 
-        //rate popup reference
-        private GameObject rate;
-
         //EDITOR: amount for rewarded ads
         public int rewardedGems = 5;
 
@@ -107,14 +104,6 @@ namespace SweetSugar.Scripts.Core
                 PlayerPrefs.Save();
             }
 
-            rate = Instantiate(Resources.Load("Prefabs/Rate")) as GameObject;
-            rate.SetActive(false);
-            rate.transform.SetParent(MenuReference.THIS.transform);
-            rate.transform.localPosition = Vector3.zero;
-            rate.GetComponent<RectTransform>().offsetMin = new Vector2(-5, -5);
-            rate.GetComponent<RectTransform>().offsetMax = new Vector2(5, 5);
-//        rate.GetComponent<RectTransform>().anchoredPosition = (Resources.Load("Prefabs/Rate") as GameObject).GetComponent<RectTransform>().anchoredPosition;
-            rate.transform.localScale = Vector3.one;
             var g = MenuReference.THIS.Reward.gameObject;
             g.SetActive(true);
             g.SetActive(false);
@@ -134,16 +123,6 @@ namespace SweetSugar.Scripts.Core
         {
             return string.Format("Level.{0:000}.StarsCount", number);
         }
-
-
-
-
-
-        public void ShowRate()
-        {
-            rate.SetActive(true);
-        }
-
 
         public void ShowReward()
         {
