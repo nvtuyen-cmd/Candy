@@ -35,9 +35,6 @@ namespace SweetSugar.Scripts.Level
          // public SquareBlocks[] fieldData.levelSquares = new SquareBlocks[81];
          public GameObject squarePrefab;
          public Sprite squareSprite1;
-         public GameObject outline1;
-         public GameObject outline2;
-         public GameObject outline3;
 
          // public int fieldData.maxRows = 9;
          // public int fieldData.maxCols = 9;

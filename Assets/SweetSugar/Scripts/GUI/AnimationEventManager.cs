@@ -374,7 +374,6 @@ namespace SweetSugar.Scripts.GUI
             }
             else if (gameObject.name == "MenuPlay")
             {
-                GUIUtils.THIS.StartGame();
                 CloseMenu();
             }
             else if (gameObject.name == "MenuPause")
@@ -508,7 +507,6 @@ namespace SweetSugar.Scripts.GUI
             if (InitScript.Gems >= price)
             {
                 InitScript.Instance.SpendGems(price);
-                InitScript.Instance.BuyBoost(boostType, price, count);
                 callback?.Invoke();
                 //InitScript.Instance.SpendBoost(boostType);
                 CloseMenu();

@@ -12,8 +12,6 @@
 
 
 using SweetSugar.Scripts.GUI;
-using SweetSugar.Scripts.GUI.BonusSpin;
-using SweetSugar.Scripts.GUI.Boost;
 using SweetSugar.Scripts.Integrations.Network;
 using SweetSugar.Scripts.Level;
 using SweetSugar.Scripts.MapScripts;
@@ -145,7 +143,6 @@ namespace SweetSugar.Scripts.Core
             }
             else if(currentReward == RewardsType.FreeAction)
             {
-                MenuReference.THIS.BonusSpin.GetComponent<BonusSpin>().StartSpin();
             }
 
             currentReward = RewardsType.NONE;
@@ -241,24 +238,6 @@ namespace SweetSugar.Scripts.Core
             //{
             //    GameObject.Find("Canvas").transform.Find("RestoreLifes").gameObject.SetActive(true);
             //}
-        }
-
-        public void BuyBoost(BoostType boostType, int price, int count)
-        {
-            PlayerPrefs.SetInt("" + boostType, PlayerPrefs.GetInt("" + boostType) + count);
-            PlayerPrefs.Save();
-#if PLAYFAB || GAMESPARKS
-            //NetworkManager.dataManager.SetBoosterData();
-#endif
-        }
-
-        public void SpendBoost(BoostType boostType)
-        {
-            PlayerPrefs.SetInt("" + boostType, PlayerPrefs.GetInt("" + boostType) - 1);
-            PlayerPrefs.Save();
-#if PLAYFAB || GAMESPARKS
-            //NetworkManager.dataManager.SetBoosterData();
-#endif
         }
 
         void OnApplicationPause(bool pauseStatus)

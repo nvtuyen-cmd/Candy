@@ -10,7 +10,6 @@
 // // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // // THE SOFTWARE.
 
-using SweetSugar.Scripts.GUI.BonusSpin;
 using SweetSugar.Scripts.GUI.Boost;
 using TMPro;
 using UnityEngine;
@@ -33,28 +32,6 @@ namespace SweetSugar.Scripts.GUI
         {
         }
 
-        /// <summary>
-        /// Sets Wheel reward
-        /// </summary>
-        /// <param name="reward">reward object</param>
-        public void SetWheelReward(RewardWheel reward)
-        {
-            foreach (Transform item in iconHolder)
-            {
-                Destroy(item.gameObject);
-            }
-            var g = Instantiate(reward.gameObject, Vector2.zero, Quaternion.identity, iconHolder);
-            g.transform.localPosition = Vector3.zero;
-            g.transform.localScale = Vector3.one * 2;
-            icon = g.GetComponent<Image>();
-            if (reward.type == BoostType.None)
-            {
-            }
-            else
-            {
-            }
-
-        }
 
         /// <summary>
         /// Set icon

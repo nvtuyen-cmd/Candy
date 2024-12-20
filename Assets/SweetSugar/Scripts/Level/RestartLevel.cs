@@ -39,7 +39,6 @@ namespace SweetSugar.Scripts.Level
             yield return new WaitUntil(()=>LevelManager.THIS != null);
             if(scene.name == "game")
             {
-                GUIUtils.THIS.StartGame();
                 Destroy(gameObject);
             }
         }

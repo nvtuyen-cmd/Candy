@@ -186,7 +186,6 @@ namespace SweetSugar.Scripts.Core
                 {
                     if (activatedBoost != null && gameStatus == GameState.Playing)
                     {
-                        InitScript.Instance.SpendBoost(activatedBoost.type);
                         UnLockBoosts();
                     }
                 }
@@ -1235,7 +1234,6 @@ namespace SweetSugar.Scripts.Core
         {
             if (BoostPackage > 0)
             {
-                InitScript.Instance.SpendBoost(BoostType.Packages);
                 foreach (var item in field.GetRandomItems(BoostPackage))
                 {
                     item.NextType = ItemsTypes.PACKAGE;
@@ -1247,7 +1245,6 @@ namespace SweetSugar.Scripts.Core
 
             if (BoostColorfullBomb > 0)
             {
-                InitScript.Instance.SpendBoost(BoostType.MulticolorCandy);
                 foreach (var item in field.GetRandomItems(BoostColorfullBomb))
                 {
                     item.NextType = ItemsTypes.MULTICOLOR;
@@ -1259,7 +1256,6 @@ namespace SweetSugar.Scripts.Core
 
             if (BoostStriped > 0)
             {
-                InitScript.Instance.SpendBoost(BoostType.Stripes);
                 foreach (var item in field.GetRandomItems(BoostStriped))
                 {
                     item.NextType = (ItemsTypes)Random.Range(4, 6);
@@ -1271,7 +1267,6 @@ namespace SweetSugar.Scripts.Core
 
             if (BoostMarmalade > 0)
             {
-                InitScript.Instance.SpendBoost(BoostType.Marmalade);
                 foreach (var item in field.GetRandomItems(BoostMarmalade))
                 {
                     item.NextType = ItemsTypes.MARMALADE;

@@ -22,10 +22,12 @@ namespace SweetSugar.Scripts.System.Orientation
     public class OrientationListener : MonoBehaviour
     {
         public delegate void OrientationChanged(ScreenOrientation orientation);
+
         public static event OrientationChanged OnOrientationChanged;
 
         private float previousAspect;
         public static ScreenOrientation previousOrientation;
+        public Camera camera;
 
         void OnEnable()
         {
@@ -38,9 +40,7 @@ namespace SweetSugar.Scripts.System.Orientation
         {
             LevelManager.OnMapState -= OnStateChanged;
             LevelManager.OnEnterGame -= OnStateChanged;
-
         }
-
 
         void OnStateChanged()
         {
@@ -50,35 +50,27 @@ namespace SweetSugar.Scripts.System.Orientation
 
         void Update()
         {
-            // #if UNITY_EDITOR 
-            var v = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-            v = new Vector3(Screen.width, Screen.height, 0);
+            var v = new Vector3(Screen.width, Screen.height, 0);
             var aspect = Screen.height / (float)Screen.width;
-            // #endif
-            // if (Application.isPlaying)
-            // {
-            //     if (LevelManager.This.gameStatus == GameState.WaitForPopup) return;
-            // }
-            if (( v.x > v.y) && (ScreenOrientation.LandscapeLeft != previousOrientation) || aspect != previousAspect)
+            if ((v.x > v.y) && (ScreenOrientation.LandscapeLeft != previousOrientation) || aspect != previousAspect)
             {
                 SetOrientation(ScreenOrientation.LandscapeLeft);
             }
 
-            else if (( v.x > v.y) && (ScreenOrientation.LandscapeLeft != previousOrientation) || aspect != previousAspect)
+            else if ((v.x > v.y) && (ScreenOrientation.LandscapeLeft != previousOrientation) || aspect != previousAspect)
             {
                 SetOrientation(ScreenOrientation.LandscapeLeft);
             }
 
-            else if (( v.x < v.y) && (ScreenOrientation.Portrait != previousOrientation) || aspect != previousAspect)
+            else if ((v.x < v.y) && (ScreenOrientation.Portrait != previousOrientation) || aspect != previousAspect)
             {
                 SetOrientation(ScreenOrientation.Portrait);
             }
 
-            else if (( v.x < v.y) && (ScreenOrientation.Portrait != previousOrientation) || aspect != previousAspect)
+            else if ((v.x < v.y) && (ScreenOrientation.Portrait != previousOrientation) || aspect != previousAspect)
             {
                 SetOrientation(ScreenOrientation.Portrait);
             }
-
         }
 
         private void SetOrientation(ScreenOrientation orientation)
