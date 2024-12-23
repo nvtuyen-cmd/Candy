@@ -35,7 +35,7 @@ namespace Eran {
                 Version = CurrentVersion,
                 MarkRed = true,
                 ShowInfoBox = true,
-                IgnorePathContainsCombined = "Gizmos;Resources;Editor;Asset Cleaner;Asset Usage Finder;",
+                IgnorePathContainsCombined = "Gizmos;Resources;Editor;",
                 IgnoreMaterial = false,
                 IgnoreScriptable = true,
                 IgnoreSprite = false,

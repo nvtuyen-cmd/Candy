@@ -29,10 +29,18 @@ namespace Eran
     internal class SysWindowGui : IEcsRunSystem, IEcsInitSystem
     {
         //config 
-        internal GUIStyle currentBtn = new GUIStyle()
+        private GUIStyle currentBtn = new GUIStyle()
         {
             alignment = TextAnchor.MiddleCenter,
-            fixedWidth = 350,
+            normal =
+            {
+                textColor = Color.yellow,
+            },
+        };
+
+        private static GUIStyle currentInspector = new GUIStyle()
+        {
+            alignment = TextAnchor.MiddleLeft,
             fixedHeight = 15,
             normal = { textColor = Color.yellow },
         };
@@ -630,7 +638,7 @@ namespace Eran
                     case TargetTypeEnum.ObjectInScene:
                         _contentBuf.text = $"{arg.Main.name} (Object in Scene)";
 
-                        if (GUILayout.Button(_contentBuf, GUILayout.MinWidth(TextWidth())))
+                        if (GUILayout.Button(_contentBuf, currentBtn, GUILayout.MinWidth(TextWidth())))
                         {
                             EditorGUIUtility.PingObject(arg.Main);
                         }
@@ -640,14 +648,14 @@ namespace Eran
                         _contentBuf.image = AssetPreview.GetMiniThumbnail(arg.Target);
                         _contentBuf.text = $"{arg.Main.name} (Object in Staging)";
 
-                        if (GUILayout.Button(_contentBuf, "Remove Unused"))
+                        if (GUILayout.Button(_contentBuf, currentBtn))
                         {
                             EditorGUIUtility.PingObject(arg.Main);
                         }
 
                         break;
                     default:
-                        if (GUILayout.Button($"{arg.Main.name} (Unknown Object Type)"))
+                        if (GUILayout.Button($"{arg.Main.name} (Unknown Object Type)", currentBtn))
                         {
                             EditorGUIUtility.PingObject(arg.Main);
                         }
@@ -698,9 +706,8 @@ namespace Eran
 
                 _contentBuf.text =
                     $"Assets: {unusedAssets.Count} ({CommonUtils.BytesToString(assetSize)}), Scenes: {unusedScenes.Count} ({CommonUtils.BytesToString(sceneSize)})";
-                ;
 
-                GUILayout.Button(_contentBuf, GUILayout.MinWidth(TextWidth()));
+                GUILayout.Button(_contentBuf, currentBtn, GUILayout.MinWidth(TextWidth()));
 
                 if (AskDeleteUnusedFiles(arg, unusedAssets, windowData))
                     return new BacklinkStore.UnusedQty();
@@ -884,7 +891,7 @@ namespace Eran
                         foreach (var i in indices)
                         {
                             if (count++ == 0)
-                                if (GUILayout.Button(get2[i].Label, "Row Main Asset"))
+                                if (GUILayout.Button(get2[i].Label, currentInspector))
                                 {
                                     if (windowData.Click.IsDoubleClick(grp.RootGo))
                                     {
@@ -1003,7 +1010,7 @@ namespace Eran
                                                     if (count++ == 0)
                                                     {
                                                         Result comp = g1[i2];
-                                                        if (GUILayout.Button(g2[i2].Label, "Row Main Asset"))
+                                                        if (GUILayout.Button(g2[i2].Label, currentInspector))
                                                         {
                                                             if (windowData.Click.IsDoubleClick(grp.RootGo))
                                                             {
@@ -1064,7 +1071,7 @@ namespace Eran
             {
                 var buf = GUI.color;
                 var pingGo = data.MainFile == null ? data.RootGo : data.MainFile;
-                if (GUILayout.Button(gui.Label, "Row Main Asset"))
+                if (GUILayout.Button(gui.Label, currentInspector))
                 {
                     if (windowData.Click.IsDoubleClick(pingGo))
                     {
