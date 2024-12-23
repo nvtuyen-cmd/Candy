@@ -25,7 +25,6 @@ using SweetSugar.Scripts.Items;
 using SweetSugar.Scripts.Items._Interfaces;
 using SweetSugar.Scripts.Level;
 using SweetSugar.Scripts.Level.ItemsPerLevel.Editor;
-using SweetSugar.Scripts.MapScripts.StaticMap.Editor;
 using SweetSugar.Scripts.System;
 using SweetSugar.Scripts.TargetScripts.TargetEditor;
 using SweetSugar.Scripts.TargetScripts.TargetSystem;
@@ -158,7 +157,6 @@ namespace SweetSugar.Scripts.Editor
         private void OnFocus()
         {
             window = (LevelMakerEditor) GetWindow(typeof(LevelMakerEditor));
-            sceneSwitcher = Resources.Load<MapSwitcher>("Scriptable/MapSwitcher");
             levelScriptable = Resources.Load("Levels/LevelScriptable") as LevelScriptable;
             targetEditorScriptable =
                 AssetDatabase.LoadAssetAtPath<TargetEditorScriptable>(
@@ -1310,8 +1308,8 @@ namespace SweetSugar.Scripts.Editor
         {
             dirtyLevel = true;
             SaveLevel(levelNumber);
-            if (EditorSceneManager.GetActiveScene().name != sceneSwitcher.GetSceneName())
-                EditorSceneManager.OpenScene("Assets/SweetSugar/Scenes/" + sceneSwitcher.GetSceneName() + ".unity");
+            if (EditorSceneManager.GetActiveScene().name != "game")
+                EditorSceneManager.OpenScene("Assets/SweetSugar/Scenes/game.unity");
             LevelManager lm = Camera.main.GetComponent<LevelManager>();
             PlayerPrefs.SetInt("OpenLevelTest", levelNumber);
             PlayerPrefs.SetInt("OpenLevel", levelNumber);
@@ -2968,7 +2966,6 @@ namespace SweetSugar.Scripts.Editor
         private int selectedTutorial;
         private TargetEditorScriptable targetEditorScriptable;
         private Texture2DSize[] squareTextures;
-        private MapSwitcher sceneSwitcher;
         private WinReward winReward;
 
         private int layers

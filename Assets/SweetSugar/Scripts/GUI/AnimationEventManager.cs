@@ -17,8 +17,6 @@ using JetBrains.Annotations;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.GUI.Boost;
 using SweetSugar.Scripts.Level;
-using SweetSugar.Scripts.MapScripts.StaticMap.Editor;
-using SweetSugar.Scripts.System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -421,7 +419,7 @@ namespace SweetSugar.Scripts.GUI
         {
             Instantiate(Resources.Load("Loading"), transform.parent);
             yield return new WaitForEndOfFrame();
-            SceneManager.LoadScene(Resources.Load<MapSwitcher>("Scriptable/MapSwitcher").GetSceneName());
+            SceneManager.LoadScene("game");
         }
 
         public void BuyLifeShop()

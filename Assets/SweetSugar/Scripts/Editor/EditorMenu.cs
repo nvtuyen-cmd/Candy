@@ -10,7 +10,6 @@
 // // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // // THE SOFTWARE.
 
-using SweetSugar.Scripts.MapScripts.StaticMap.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -25,35 +24,11 @@ namespace SweetSugar.Scripts.Editor
     {
         EditorSceneManager.OpenScene("Assets/SweetSugar/Scenes/main.unity");
     }
-    
-    [MenuItem("Sweet Sugar/Scenes/Map switcher/Static map")]
-    public static void MapSceneStatic()
-    {
-        SetStaticMap( true);
-        GameScene();
-    }
-    
-    [MenuItem("Sweet Sugar/Scenes/Map switcher/Dinamic map")]
-    public static void MapSceneDinamic()
-    {
-        SetStaticMap( false);
-        GameScene();
-    }
-    
-    public static void SetStaticMap(bool enabled) {
- 
-        UnityEditor.Menu.SetChecked("Sweet Sugar/Scenes/Map switcher/Static map", enabled);
-        UnityEditor.Menu.SetChecked("Sweet Sugar/Scenes/Map switcher/Dinamic map", !enabled);
-        var sc = Resources.Load<MapSwitcher>("Scriptable/MapSwitcher");
-        sc.staticMap = enabled;
-        EditorUtility.SetDirty(sc);
-        AssetDatabase.SaveAssets();
-    }
 
     [MenuItem("Sweet Sugar/Scenes/Game scene")]
     public static void GameScene()
     {
-        EditorSceneManager.OpenScene("Assets/SweetSugar/Scenes/"+Resources.Load<MapSwitcher>("Scriptable/MapSwitcher").GetSceneName()+".unity");
+        EditorSceneManager.OpenScene("Assets/SweetSugar/Scenes/game.unity");
     }
 
     [MenuItem("Sweet Sugar/Settings/Additional settings")]
