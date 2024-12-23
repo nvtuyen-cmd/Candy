@@ -68,9 +68,7 @@ namespace Leopotam.Ecs {
         /// </summary>
         internal static int ComponentTypesCount;
 
-#if DEBUG
         readonly List<System.Reflection.FieldInfo> _nullableFields = new List<System.Reflection.FieldInfo> (8);
-#endif
 
         public object[] Items = new Object[128];
 
@@ -85,7 +83,6 @@ namespace Leopotam.Ecs {
         internal EcsComponentPool (Type cType, bool isAutoReset) {
             _type = cType;
             _isAutoReset = isAutoReset;
-#if DEBUG
             // collect all marshal-by-reference fields.
             var fields = _type.GetFields ();
             for (var i = 0; i < fields.Length; i++) {
@@ -103,7 +100,6 @@ namespace Leopotam.Ecs {
                     }
                 }
             }
-#endif
         }
 
         /// <summary>
@@ -111,10 +107,8 @@ namespace Leopotam.Ecs {
         /// </summary>
         /// <param name="ctor"></param>
         public void SetCustomCtor (Func<object> ctor) {
-#if DEBUG
             // ReSharper disable once JoinNullCheckWithUsage
             if (ctor == null) { throw new Exception ("Ctor is null."); }
-#endif
             _customCtor = ctor;
         }
 
@@ -158,7 +152,6 @@ namespace Leopotam.Ecs {
             if (_isAutoReset) {
                 ((IEcsAutoReset) Items[idx]).Reset ();
             }
-#if DEBUG
             // check all marshal-by-reference typed fields for nulls.
             var obj = Items[idx];
             for (int i = 0, iMax = _nullableFields.Count; i < iMax; i++) {
@@ -174,7 +167,6 @@ namespace Leopotam.Ecs {
                     }
                 }
             }
-#endif
             if (_reservedItemsCount == _reservedItems.Length) {
                 Array.Resize (ref _reservedItems, _reservedItemsCount << 1);
             }

@@ -75,13 +75,11 @@ namespace Leopotam.Ecs {
         /// </summary>
         /// <param name="listener">Listener.</param>
         public void AddListener (IEcsFilterListener listener) {
-#if DEBUG
             for (int i = 0, iMax = ListenersCount; i < iMax; i++) {
                 if (Listeners[i] == listener) {
                     throw new Exception ("Listener already subscribed.");
                 }
             }
-#endif
             if (Listeners.Length == ListenersCount) {
                 Array.Resize (ref Listeners, ListenersCount << 1);
             }
@@ -185,11 +183,9 @@ namespace Leopotam.Ecs {
 
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         void Unlock () {
-#if DEBUG
             if (_lockCount <= 0) {
                 throw new Exception ($"Invalid lock-unlock balance for \"{GetType ().Name}\".");
             }
-#endif
             _lockCount--;
             if (_lockCount == 0 && _delayedOpsCount > 0) {
                 // process delayed operations.
@@ -205,7 +201,6 @@ namespace Leopotam.Ecs {
             }
         }
 
-#if DEBUG
         /// <summary>
         /// For debug purposes. Check filters equality by included / excluded components.
         /// </summary>
@@ -235,7 +230,6 @@ namespace Leopotam.Ecs {
             }
             return true;
         }
-#endif
 
         /// <summary>
         /// Event for adding compatible entity to filter.
