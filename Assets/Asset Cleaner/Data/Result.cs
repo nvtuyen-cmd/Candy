@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class Result : IEcsAutoReset {
         public string FilePath;
         public Object File;

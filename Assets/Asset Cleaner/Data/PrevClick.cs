@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Asset_Cleaner {
+namespace Eran {
     public struct PrevClick {
         const float DoubleClickTime = 0.5f;
         Object _target;

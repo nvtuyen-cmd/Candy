@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class RequestRepaintEvt { }
 
     class SysRepaintWindow : IEcsRunSystem, IEcsInitSystem {

@@ -1,4 +1,4 @@
-﻿namespace Asset_Cleaner {
+﻿namespace Eran {
     class Config {
         // serialized
         public bool MarkRed;

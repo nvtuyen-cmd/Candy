@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class DirtyUtils {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int HashCode<T1>(in T1 v1) {

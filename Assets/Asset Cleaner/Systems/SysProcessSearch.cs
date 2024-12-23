@@ -1,9 +1,9 @@
 ﻿using System;
 using Leopotam.Ecs;
 using UnityEngine;
-using static Asset_Cleaner.AufCtx;
+using static Eran.AufCtx;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class SysProcessSearch : IEcsRunSystem {
         EcsFilter<SelectionChanged> _from = null;
 

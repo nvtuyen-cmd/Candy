@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Asset_Cleaner {
+namespace Eran {
     [Serializable]
     class PersistentUndoRedoState {
         public List<SelectionEntry> History = new List<SelectionEntry>();

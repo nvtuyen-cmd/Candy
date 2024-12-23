@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Asset_Cleaner {
+namespace Eran {
     readonly struct Option<T> : IEquatable<Option<T>>, IComparable<Option<T>> {
         // ReSharper disable once StaticMemberInGenericType
         static readonly bool IsValueType;

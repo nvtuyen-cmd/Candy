@@ -2,7 +2,7 @@
 using UnityEditor;
 using Object = UnityEngine.Object;
 
-namespace Asset_Cleaner {
+namespace Eran {
     [Serializable]
     class SelectionEntry {
         public bool IsGuids;

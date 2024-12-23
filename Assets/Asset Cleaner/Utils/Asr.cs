@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using UnityEngine.Assertions;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class FLAGS {
         //  cleanup in release
         public const string DEBUG = "DEBUG1";

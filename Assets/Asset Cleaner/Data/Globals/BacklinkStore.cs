@@ -7,7 +7,7 @@ using UnityEditorInternal;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class BacklinkStore {
         public bool Initialized { get; private set; }
 

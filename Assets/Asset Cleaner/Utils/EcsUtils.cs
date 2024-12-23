@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Leopotam.Ecs;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class EcsUtils {
         public static IEnumerable<(T Group, IEnumerable<int> Indices)> GroupBy1<T, T1, T2>(this EcsFilter<T, T1, T2> f, IEqualityComparer<T> comp)
             where T : class

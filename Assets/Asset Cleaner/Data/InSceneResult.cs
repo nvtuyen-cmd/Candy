@@ -1,6 +1,6 @@
 ﻿using Leopotam.Ecs;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class InSceneResult : IEcsAutoReset {
         public string ScenePath;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class Pool<T> : IDisposable where T : class {
         Func<T> _ctor;
         readonly Stack<T> _stack;

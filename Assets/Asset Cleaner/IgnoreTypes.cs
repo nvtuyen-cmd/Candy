@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class IgnoreTypes {
         public static bool Check(string path, out Type type) {
             type = AssetDatabase.GetMainAssetTypeAtPath(path);

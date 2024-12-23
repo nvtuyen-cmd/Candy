@@ -1,4 +1,4 @@
-﻿namespace Asset_Cleaner {
+﻿namespace Eran {
     enum FindModeEnum {
         None = 0,
         File = 1,

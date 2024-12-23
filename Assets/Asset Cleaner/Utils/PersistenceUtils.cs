@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class PersistenceUtils {
         public static void Load(ref Config result) {
             var serializable = Deserialize();

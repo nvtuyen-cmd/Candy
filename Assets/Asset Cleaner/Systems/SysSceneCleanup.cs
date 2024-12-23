@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class SceneToClose : IEcsAutoReset {
         public Scene Scene;
         public int SelectionId;

@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class ProcessAllAssets : AssetPostprocessor {
         static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths) {
             if (!AufCtx.InitStarted) return;

@@ -1,7 +1,7 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine.SceneManagement;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class SceneDetails : IEcsAutoReset {
         public string Path;
         public Scene Scene;

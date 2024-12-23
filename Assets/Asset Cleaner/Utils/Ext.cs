@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Leopotam.Ecs;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class Ext {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Eq(this string s1, string s2) => (s1 == s2);

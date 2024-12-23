@@ -1,11 +1,18 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Asset_Cleaner {
-    static class ProjectViewGui {
-        static CleanerStyleAsset.Style _style = Globals<WindowData>.Value.Style;
+namespace Eran
+{
+    internal static class ProjectViewGui
+    {
+        private static GUIStyle projectView = new GUIStyle()
+        {
+            alignment = TextAnchor.MiddleRight,
+            normal = { textColor = Color.blue },
+        };
 
-        public static void OnProjectWindowItemOnGui(string guid, Rect rect) {
+        internal static void OnProjectWindowItemOnGui(string guid, Rect rect)
+        {
             if (!Globals<Config>.Value.MarkRed) return;
 
             var store = Globals<BacklinkStore>.Value;
@@ -17,19 +24,21 @@ namespace Asset_Cleaner {
             long size = 0;
             var _ = store.UnusedFiles.TryGetValue(path, out size) || store.UnusedScenes.TryGetValue(path, out size);
 
-            if (SearchUtils.IsUnused(path)) {
+            if (SearchUtils.IsUnused(path))
+            {
                 var buf = GUI.color;
                 {
-                    GUI.color = _style.RedHighlight;
+                    GUI.color = new Color(1, 0, 0, 1f);
                     GUI.Box(rect, string.Empty);
                 }
                 GUI.color = buf;
-                GUI.Label(rect, CommonUtils.BytesToString(size), _style.ProjectViewCounterLabel);
+                GUI.Label(rect, CommonUtils.BytesToString(size),projectView);
             }
         }
 
 
-        static void ShowRowQuantity(Rect rect, string path, BacklinkStore backlinkStore) {
+        internal static void ShowRowQuantity(Rect rect, string path, BacklinkStore backlinkStore)
+        {
             if (!AssetDatabase.IsValidFolder(path))
                 return;
 
@@ -40,8 +49,10 @@ namespace Asset_Cleaner {
             long size = folderWithQty?.UnusedSize ?? 0;
 
             if (cntFiles == 0 && cntScenes == 0) return;
-            var countStr = cntFiles + cntScenes > 0 ? $"{cntFiles} | {cntScenes} ({CommonUtils.BytesToString(size)})" : "";
-            GUI.Label(rect, countStr, _style.ProjectViewCounterLabel);
+            var countStr = cntFiles + cntScenes > 0
+                ? $"{cntFiles} | {cntScenes} ({CommonUtils.BytesToString(size)})"
+                : "";
+            GUI.Label(rect, countStr, projectView);
         }
     }
 }

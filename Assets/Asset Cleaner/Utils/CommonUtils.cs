@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Asset_Cleaner {
+namespace Eran {
     public static class CommonUtils {
         static string[] _suffix = {"B", "KB", "MB", "GB", "TB"};
 

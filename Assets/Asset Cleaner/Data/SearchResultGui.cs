@@ -3,7 +3,7 @@ using Leopotam.Ecs;
 using UnityEditor;
 using UnityEngine;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class SearchResultGui : IEcsAutoReset {
         public SerializedObject SerializedObject;
         public List<PropertyData> Properties;

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class SelectionChanged : IEcsAutoReset {
         public Object Target;
         public Scene Scene;

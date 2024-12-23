@@ -1,6 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Asset_Cleaner {
+namespace Eran {
     static class AufCtx {
         public static EcsWorld World;
 

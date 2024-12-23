@@ -1,4 +1,4 @@
-﻿namespace Asset_Cleaner {
+﻿namespace Eran {
     static class Globals<T> where T : class {
         static T _instance;
 

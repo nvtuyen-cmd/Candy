@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 using Leopotam.Ecs;
 using UnityEditor;
 using UnityEngine;
-using static Asset_Cleaner.AufCtx;
+using static Eran.AufCtx;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class CleanupPrevArg { }
 
     class UndoEvt { }

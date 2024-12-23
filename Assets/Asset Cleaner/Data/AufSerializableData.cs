@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Asset_Cleaner {
+namespace Eran {
     [Serializable]
     class AufSerializableData {
         public const int CurrentVersion = 1;

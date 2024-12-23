@@ -3,7 +3,7 @@ using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Asset_Cleaner {
+namespace Eran {
     class SearchArg : IEcsAutoReset {
         public Object Target;
         public Object Main;
