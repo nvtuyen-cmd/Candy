@@ -270,18 +270,8 @@ namespace SweetSugar.Scripts.Core
         {
         }
         
-        void OnEnable()
-        {
-            LevelsMap.LevelSelected += OnLevelClicked;
-            LevelsMap.OnLevelReached += OnLevelReached;
-
-        }
-
         void OnDisable()
         {
-            LevelsMap.LevelSelected -= OnLevelClicked;
-            LevelsMap.OnLevelReached -= OnLevelReached;
-
             PlayerPrefs.SetFloat("RestLifeTimer", RestLifeTimer);
             PlayerPrefs.SetInt("Lifes", lifes);
             PlayerPrefs.Save();

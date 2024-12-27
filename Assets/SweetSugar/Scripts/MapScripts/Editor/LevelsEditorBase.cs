@@ -23,13 +23,5 @@ namespace SweetSugar.Scripts.MapScripts.Editor
         {
         }
 
-        protected void SetStarsEnabled(LevelsMap levelsMap, bool isEnabled)
-        {
-            levelsMap.SetStarsEnabled(isEnabled);
-            if (isEnabled)
-                levelsMap.SetStarsType(levelsMap.StarsType);
-            EditorUtility.SetDirty(levelsMap);
-            SetAllMapLevelsAsDirty();
-        }
     }
 }

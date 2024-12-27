@@ -2248,8 +2248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c680959fb13f7462ba51fa4d729a6940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalObjects: []
-  currentPanels: []
 --- !u!1 &401532165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,7 +3476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639bbcaee2a8592429bb372ded78e875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableInApps: 1
   squareWidth: 0.82
   lastDraggedItem: {fileID: 0}
   lastSwitchedItem: {fileID: 0}
@@ -3487,26 +3484,6 @@ MonoBehaviour:
   FailedCost: 12
   ExtraFailedMoves: 5
   ExtraFailedSecs: 30
-  gemsProducts:
-  - count: 8
-    price: 0.99
-  - count: 42
-    price: 4.99
-  - count: 88
-    price: 9.99
-  - count: 276
-    price: 14.99
-  - count: 480
-    price: 49.99
-  - count: 999
-    price: 99.99
-  InAppIDs:
-  - com.candysmith.sweetsugar.8coins
-  - com.candysmith.sweetsugar.42coins
-  - com.candysmith.sweetsugar.88coins
-  - com.candysmith.sweetsugar.276coins
-  - com.candysmith.sweetsugar.480coins
-  - com.candysmith.sweetsugar.999coins
   thrivingBlockDestroyed: 0
   dispenserSpawner: {fileID: 1418396488480008, guid: a587f5c2a7ea74580983584155d3bbbc,
     type: 3}
@@ -3592,7 +3569,6 @@ MonoBehaviour:
     currentSublevelIndex: 0
     subTargetsContainers: []
     generateIngredientOnlyFromSpawner: 0
-  animStarted: 0
   winTrail: {fileID: 1974993687531194, guid: 08a973105887042ab828599b85937afa, type: 3}
   movesTransform: {fileID: 545848009}
   destLoopIterations: 0
@@ -3641,7 +3617,6 @@ MonoBehaviour:
   type: 8
   plus: {fileID: 0}
   counter: {fileID: 0}
-  check: {fileID: 0}
 --- !u!114 &511786114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4281,8 +4256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90936a7a25634e86a7a2985a903fb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalObjects:
-  - {fileID: 435587983}
 --- !u!1 &577926222
 GameObject:
   m_ObjectHideFlags: 0
@@ -5522,7 +5495,6 @@ MonoBehaviour:
   type: 7
   plus: {fileID: 2081827387}
   counter: {fileID: 1737399179}
-  check: {fileID: 0}
 --- !u!1001 &810961084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6523,7 +6495,6 @@ MonoBehaviour:
   type: 4
   plus: {fileID: 221592270}
   counter: {fileID: 1344681001}
-  check: {fileID: 0}
 --- !u!1 &926379626
 GameObject:
   m_ObjectHideFlags: 0
@@ -7108,7 +7079,6 @@ MonoBehaviour:
   type: 6
   plus: {fileID: 1544730589}
   counter: {fileID: 773553487}
-  check: {fileID: 0}
 --- !u!1 &1076275392
 GameObject:
   m_ObjectHideFlags: 0
@@ -7169,7 +7139,6 @@ MonoBehaviour:
   type: 3
   plus: {fileID: 493415756}
   counter: {fileID: 581257000}
-  check: {fileID: 0}
 --- !u!1 &1092637516
 GameObject:
   m_ObjectHideFlags: 0
@@ -10010,7 +9979,6 @@ MonoBehaviour:
   type: 0
   plus: {fileID: 879352352}
   counter: {fileID: 413840634}
-  check: {fileID: 0}
 --- !u!1 &1663535908
 GameObject:
   m_ObjectHideFlags: 0
