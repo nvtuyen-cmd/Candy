@@ -28,7 +28,6 @@ namespace SweetSugar.Scripts.GUI.Boost
         public BoostType type;
         public GameObject plus;
         public GameObject counter;
-        public GameObject check;
         private BoostProduct boostProduct;
 
         private bool checkOn;
@@ -47,9 +46,9 @@ namespace SweetSugar.Scripts.GUI.Boost
             if (name == "Main Camera") return;
             if (LevelManager.THIS == null) return;
             if (LevelManager.THIS.gameStatus == GameState.Map)
-                check.SetActive(false);
-            //if (!LevelManager.This.enableInApps)
-            //gameObject.SetActive(false);
+            {
+                
+            }
             FindBoostProduct();
             ShowPlus(BoostCount() <= 0);
             boostCount.text = "" + PlayerPrefs.GetInt("" + type);
@@ -109,7 +108,6 @@ namespace SweetSugar.Scripts.GUI.Boost
 
         public void InitBoost()
         {
-            check.SetActive(false);
             plus.SetActive(true);
             LevelManager.THIS.BoostColorfullBomb = 0;
             LevelManager.THIS.BoostPackage = 0;
@@ -150,11 +148,6 @@ namespace SweetSugar.Scripts.GUI.Boost
                     break;
             }
             checkOn = checkIt;
-            if (check != null)
-            {
-                check.SetActive(checkIt);
-            }
-
             if (plus != null)
             {
                 plus.SetActive(!checkIt);

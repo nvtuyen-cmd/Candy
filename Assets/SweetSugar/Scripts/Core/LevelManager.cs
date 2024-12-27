@@ -64,10 +64,6 @@ namespace SweetSugar.Scripts.Core
     {
         public static LevelManager THIS;
 
-        //life shop reference
-        //true if Unity in-apps is enable and imported
-        public bool enableInApps;
-
         //square width for border placement
         public float squareWidth = 1.2f;
 
@@ -108,11 +104,6 @@ namespace SweetSugar.Scripts.Core
         //EDITOR: time gived to continue
         public int ExtraFailedSecs = 30;
 
-        //in-app products for purchasing
-        public List<GemProduct> gemsProducts = new List<GemProduct>();
-
-        //in-apps product IDs
-        public string[] InAppIDs;
 
         //true if thriving block destroyed on current move
         public bool thrivingBlockDestroyed;
@@ -253,8 +244,6 @@ namespace SweetSugar.Scripts.Core
 
         //levels passed for the current session
         //reference to orientation handler
-        public OrientationGameCameraHandle orientationGameCameraHandle;
-
         [HideInInspector] public List<AnimateItems> animateItems = new List<AnimateItems>();
 
         //blocking to drag items for a time
@@ -369,14 +358,7 @@ namespace SweetSugar.Scripts.Core
                         StartCoroutine(IdleItemsDirection());
                         var find = GameObject.Find("CanvasBack");
                         if (find != null) find.GetComponent<GraphicRaycaster>().enabled = false;
-                        if (orientationGameCameraHandle != null)
-                        {
-                            OrientationGameCameraHandle.CameraParameters cameraParameters =
-                                orientationGameCameraHandle.GetCameraParameters();
-                            Vector2 cameraCenter = orientationGameCameraHandle.GetCenterOffset();
-                            StartCoroutine(AnimateField(field.GetPosition() + cameraCenter, cameraParameters.size));
-                        }
-
+                        GameStart();
                         break;
                     case GameState.Tutorial: //tutorial state
                         OnWaitForTutorial?.Invoke();
@@ -478,10 +460,6 @@ namespace SweetSugar.Scripts.Core
         private void ChangeSubLevel()
         {
             CurrentSubLevel++;
-            OrientationGameCameraHandle.CameraParameters cameraParameters =
-                orientationGameCameraHandle.GetCameraParameters();
-            Vector2 cameraCenter = orientationGameCameraHandle.GetCenterOffset();
-            StartCoroutine(AnimateField(field.GetPosition() + cameraCenter, cameraParameters.size));
         }
 
         #endregion
@@ -554,10 +532,6 @@ namespace SweetSugar.Scripts.Core
             if (!isRun && Camera.main.GetComponent<MapCamera>().isActiveAndEnabled)
                 setNumbers();
 
-            if (!enable)
-                Camera.main.transform.position =
-                    new Vector3(0, 0, -10) - (Vector3)orientationGameCameraHandle.offsetFieldPosition;
-
             foreach (var item in fieldBoards)
             {
                 if (item != null)
@@ -575,7 +549,6 @@ namespace SweetSugar.Scripts.Core
         {
             THIS = this;
             testByPlay = false;
-            // testByPlay = true;//enable to instant level run
         }
 
         // Use this for initialization
@@ -588,12 +561,6 @@ namespace SweetSugar.Scripts.Core
             DebugSettings = Resources.Load<DebugSettings>("Scriptable/DebugSettings");
             AdditionalSettings = Resources.Load<AdditionalSettings>("Scriptable/AdditionalSettings");
 
-
-            enableInApps = false;
-
-
-//        if (!THIS.enableInApps)
-//            GameObject.Find("CanvasMap/SafeArea/Gems").gameObject.SetActive(false);
 
             gameStatus = GameState.Map;
             winRewardAmount = Resources.Load<WinReward>("Scriptable/WinReward").winRewardAmount;
@@ -668,53 +635,8 @@ namespace SweetSugar.Scripts.Core
 
             levelData.TargetCounters.RemoveAll(x => x.targetLevel.setCount == SetCount.FromLevel && x.GetCount() == 0);
 
-            if (orientationGameCameraHandle != null)
-            {
-                transform.position = latestFieldPos + Vector3.right * 10 + Vector3.back * 10 -
-                                     (Vector3)orientationGameCameraHandle.offsetFieldPosition;
-            }
-
             SetPreBoosts();
         }
-
-        public bool animStarted;
-
-        /// <summary>
-        /// move camera to the field
-        /// </summary>
-        /// <param name="destPos">position of the field</param>
-        /// <param name="cameraParametersSize">camera size</param>
-        /// <returns></returns>
-        private IEnumerator AnimateField(Vector3 destPos, float cameraParametersSize)
-        {
-            var _camera = GetComponent<Camera>();
-            if (animStarted) yield break;
-            animStarted = true;
-            //var duration = 2f;
-            var speed = 10f;
-            var startPos = transform.position;
-            var distance = Vector2.Distance(startPos, destPos);
-            var time = distance / speed;
-            var curveX = new AnimationCurve(new Keyframe(0, startPos.x), new Keyframe(time, destPos.x));
-            var startTime = Time.time;
-            float distCovered = 0;
-            while (distCovered < distance)
-            {
-                distCovered = (Time.time - startTime) * speed;
-                transform.localPosition = new Vector3(curveX.Evaluate(Time.time - startTime), transform.position.y, 0);
-                _camera.orthographicSize =
-                    Mathf.Lerp(_camera.orthographicSize, cameraParametersSize, Time.deltaTime * 5);
-                yield return new WaitForFixedUpdate();
-            }
-
-            _camera.orthographicSize = cameraParametersSize;
-            transform.position = destPos;
-            yield return new WaitForSeconds(0.5f);
-            animStarted = false;
-            GameStart();
-        }
-
-        //game start
         private void GameStart()
         {
             OnSublevelChanged?.Invoke();

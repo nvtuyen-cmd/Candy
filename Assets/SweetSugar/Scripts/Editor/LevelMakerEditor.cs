@@ -1,15 +1,4 @@
-﻿// // ©2015 - 2024 Candy Smith
-// // All rights reserved
-// // Redistribution of this software is strictly not allowed.
-// // Copy of this software can be obtained from unity asset store only.
-// // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// // FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-// // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// // THE SOFTWARE.
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -71,7 +60,7 @@ namespace SweetSugar.Scripts.Editor
         private Vector2 scrollViewVector;
         private bool update;
         private static int selected;
-        private string[] toolbarStrings = {"Editor", "Settings", "Shop", "In-apps", "Ads", "GUI", "Rate", "About"};
+        private string[] toolbarStrings = {"Editor", "Settings"};
         
         //Added_feature
         private string[] sectionsString = {"Blocks", "Items", "Directions", "Teleports", "Spawners"};
@@ -128,25 +117,6 @@ namespace SweetSugar.Scripts.Editor
         {
             Init();
             selected = 1;
-        }
-
-        [MenuItem("Sweet Sugar/Settings/In-app settings")]
-        public static void InappSettings()
-        {
-            Init();
-            selected = 2;
-        }
-
-        [MenuItem("Sweet Sugar/Settings/Ads settings")]
-        public static void AdsSettings()
-        {
-            Init();
-            selected = 4;
-        }
-
-        public static void ShowHelp()
-        {
-            selected = 7;
         }
 
         public static void ShowWindow()
@@ -507,53 +477,8 @@ namespace SweetSugar.Scripts.Editor
             }
             else if (selected == 1)
             {
-                if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
-                    GUISettings();
-                else
-                    GUIShowWarning();
-
-                GUILayout.Space(10);
-                // CheckSeparateLevels();
+                
             }
-            else if (selected == 2)
-            {
-                if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
-                    GUIShops();
-                else
-                    GUIShowWarning();
-            }
-            else if (selected == 3)
-            {
-                if (EditorSceneManager.GetActiveScene().name != "game" &&
-                    EditorSceneManager.GetActiveScene().name != "gameStatic")
-                {
-                    GUIShowWarning();
-                    
-                }
-            }
-            else if (selected == 4)
-            {
-                GUIAds();
-            }
-            else if (selected == 5)
-            {
-                if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
-                    GUIDialogs();
-                else
-                    GUIShowWarning();
-            }
-            else if (selected == 6)
-            {
-                    GUIShowWarning();
-            }
-            else if (selected == 7)
-            {
-            }
-
-
             EditorGUILayout.EndScrollView();
             if (UnityEngine.GUI.changed && !EditorApplication.isPlaying)
                 EditorSceneManager.MarkAllScenesDirty();
@@ -790,123 +715,6 @@ namespace SweetSugar.Scripts.Editor
         }
 
         #endregion
-
-        #region inapps_settings
-
-        private void GUIInappSettings()
-        {
-            LevelManager lm = Camera.main.GetComponent<LevelManager>();
-
-            GUILayout.Label("In-apps settings:", EditorStyles.boldLabel, GUILayout.Width(150));
-
-            if (GUILayout.Button("Reset to default", GUILayout.Width(150)))
-            {
-                ResetInAppsSettings();
-            }
-
-
-            GUILayout.Space(10);
-            bool oldenableInApps = lm.enableInApps;
-
-            GUILayout.BeginHorizontal();
-            //		lm.enableInApps = EditorGUILayout.Toggle ("Enable In-apps", lm.enableInApps, new GUILayoutOption[] {//1.6.1
-            //			GUILayout.Width (180)
-            //		});
-            if (GUILayout.Button("How to setup", GUILayout.Width(120)))
-            {
-                Application.OpenURL(
-                    "https://docs.google.com/document/d/1HeN8JtQczTVetkMnd8rpSZp_TZZkEA7_kan7vvvsMw0#bookmark=id.b1efplsspes5");
-            }
-
-            GUILayout.EndHorizontal();
-
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(20);
-            GUILayout.Label("Install: Windows->Services->\n In-app Purchasing - ON->Import", GUILayout.Width(400));
-            GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            //		if (oldenableInApps != lm.enableInApps) {1.6.1
-            //			SetScriptingDefineSymbols ();
-            //		}
-
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(30);
-            GUILayout.BeginVertical();
-            for (int i = 0; i < lm.InAppIDs.Length; i++)
-            {
-                lm.InAppIDs[i] = EditorGUILayout.TextField("Product id " + (i + 1), lm.InAppIDs[i],
-                    GUILayout.Width(300),
-                    GUILayout.MaxWidth(300));
-            }
-
-            GUILayout.Space(10);
-
-            GUILayout.Label("Android:", EditorStyles.boldLabel, GUILayout.Width(150));
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(30);
-
-            GUILayout.BeginVertical();
-            GUILayout.Space(10);
-            //GUILayout.Label(" Put Google license key into the field \n from the google play account ", EditorStyles.label, new GUILayoutOption[] { GUILayout.Width(300) });
-            //GUILayout.Space(10);
-
-            //lm.GoogleLicenseKey = EditorGUILayout.TextField("Google license key", lm.GoogleLicenseKey, new GUILayoutOption[] {
-            //    GUILayout.Width (300),
-            //    GUILayout.MaxWidth (300)
-            //});
-
-            GUILayout.Space(10);
-            if (GUILayout.Button("Android account help", GUILayout.Width(400)))
-            {
-                Application.OpenURL("http://developer.android.com/google/play/billing/billing_admin.html");
-            }
-
-            GUILayout.EndVertical();
-            GUILayout.EndHorizontal();
-            GUILayout.EndVertical();
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(30);
-            GUILayout.BeginVertical();
-
-            GUILayout.Space(10);
-            GUILayout.Label("iOS:", EditorStyles.boldLabel, GUILayout.Width(150));
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(30);
-
-            GUILayout.BeginVertical();
-
-            //GUILayout.Label(" StoreKit library must be added \n to the XCode project, generated by Unity ", EditorStyles.label, new GUILayoutOption[] { GUILayout.Width(300) });
-            GUILayout.Space(10);
-            if (GUILayout.Button("iOS account help", GUILayout.Width(400)))
-            {
-                Application.OpenURL("https://developer.apple.com/library/ios/qa/qa1329/_index.html");
-            }
-
-            GUILayout.EndVertical();
-
-            GUILayout.EndHorizontal();
-            GUILayout.EndVertical();
-            GUILayout.EndHorizontal();
-        }
-
-        private void ResetInAppsSettings()
-        {
-            LevelManager lm = Camera.main.GetComponent<LevelManager>();
-            lm.InAppIDs[0] = "gems10";
-            lm.InAppIDs[1] = "gems50";
-            lm.InAppIDs[2] = "gems100";
-            lm.InAppIDs[3] = "gems150";
-        }
-
-        #endregion
-
         private void GUIHelp()
         {
             GUILayout.Label("Sweet Sugar Match 3 Complete Project + EDITOR v " + Application.version, EditorStyles.boldLabel,
@@ -1235,72 +1043,6 @@ namespace SweetSugar.Scripts.Editor
         {
             return string.Format("Level.{0:000}.StarsCount", number);
         }
-
-        #region shop
-
-        private void GUIShops()
-        {
-            LevelManager lm = Camera.main.GetComponent<LevelManager>();
-
-            GUILayout.Label("Shop settings:", EditorStyles.boldLabel, GUILayout.Width(150));
-
-            if (GUILayout.Button("Reset to default", GUILayout.Width(150)))
-            {
-                ResetShops();
-            }
-
-            GUILayout.Space(10);
-            gems_shop_show = EditorGUILayout.Foldout(gems_shop_show, "Gems shop settings:");
-            if (gems_shop_show)
-            {
-                int i = 1;
-                foreach (GemProduct item in lm.gemsProducts)
-                {
-                    GUILayout.BeginHorizontal();
-                    GUILayout.BeginVertical();
-
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Space(30);
-                    GUILayout.Label("Gems count", GUILayout.Width(100));
-                    GUILayout.Label("Price $", GUILayout.Width(100));
-                    GUILayout.EndHorizontal();
-
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Space(30);
-                    item.count =
-                        EditorGUILayout.IntField("", item.count, GUILayout.Width(100), GUILayout.MaxWidth(100));
-                    item.price =
-                        EditorGUILayout.FloatField("", item.price, GUILayout.Width(100), GUILayout.MaxWidth(100));
-                    GUILayout.EndHorizontal();
-                    GUILayout.EndVertical();
-                    GUILayout.EndHorizontal();
-                    i++;
-                }
-            }
-
-            GUILayout.Space(10);
-            boost_show = EditorGUILayout.Foldout(boost_show, "Boosts shop settings:");
-            if (boost_show)
-            {
-                
-            }
-        }
-
-        private void ResetShops()
-        {
-            LevelManager lm = Camera.main.GetComponent<LevelManager>();
-
-            lm.gemsProducts[0].count = 10;
-            lm.gemsProducts[0].price = 0.99f;
-            lm.gemsProducts[1].count = 50;
-            lm.gemsProducts[1].price = 4.99f;
-            lm.gemsProducts[2].count = 100;
-            lm.gemsProducts[2].price = 9.99f;
-            lm.gemsProducts[3].count = 150;
-            lm.gemsProducts[3].price = 14.99f;
-        }
-
-        #endregion
 
         #region leveleditor
 
