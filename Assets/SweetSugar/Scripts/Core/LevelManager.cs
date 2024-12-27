@@ -231,9 +231,6 @@ namespace SweetSugar.Scripts.Core
         public GameObject FieldsParent;
 
         //Gameobject reference
-        public GameObject NoMoreMatches;
-
-        //Gameobject reference
         public GameObject CompleteWord;
 
         //Gameobject reference
@@ -367,15 +364,11 @@ namespace SweetSugar.Scripts.Core
                         DOVirtual.DelayedCall(1, () => FailedWord.SetActive(true));
                         DOVirtual.DelayedCall(3, () =>
                         {
-                            var preFailedGameObject = MenuReference.THIS.PreFailed.gameObject;
-                            preFailedGameObject.SetActive(true);
                         });
                         break;
                     case GameState.BombFailed:
                         DOVirtual.DelayedCall(0.3f, () =>
                         {
-                            var preFailedGameObject = MenuReference.THIS.PreFailed.gameObject;
-                            preFailedGameObject.SetActive(true);
                         });
                         break;
                     case GameState.Map: //map state
@@ -402,7 +395,6 @@ namespace SweetSugar.Scripts.Core
                         StartCoroutine(AI.THIS.CheckPossibleCombines());
                         break;
                     case GameState.GameOver: //game over
-                        MenuReference.THIS.MenuFailed.gameObject.SetActive(true);
                         OnLose?.Invoke();
                         break;
                     case GameState.PreWinAnimations: //animations after win
@@ -414,7 +406,6 @@ namespace SweetSugar.Scripts.Core
                         break;
                     case GameState.Win: //shows MenuComplete
                         OnMenuComplete?.Invoke();
-                        MenuReference.THIS.MenuComplete.gameObject.SetActive(true);
                         SoundBase.Instance.PlayOneShot(SoundBase.Instance.complete[1]);
                         if (winRewardAmount > 0)
                             InitScript.Instance
@@ -516,12 +507,6 @@ namespace SweetSugar.Scripts.Core
                         setNumbers();
                     }
                 }
-            }
-            else
-            {
-                GetComponent<Camera>().orthographicSize = 4;
-                MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = false;
-                MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = true;
             }
 
             Camera.main.GetComponent<MapCamera>().enabled = enable;
@@ -741,7 +726,7 @@ namespace SweetSugar.Scripts.Core
         //Animations after win
         private IEnumerator PreWinAnimationsCor()
         {
-            tapToSkip = Instantiate((GameObject)Resources.Load("Prefabs/TapToSkip"), MenuReference.THIS.transform);
+            //tapToSkip = Instantiate((GameObject)Resources.Load("Prefabs/TapToSkip"), MenuReference.THIS.transform);
             if (!InitScript.Instance.losingLifeEveryGame && InitScript.lifes < InitScript.Instance.CapOfLife)
                 InitScript.Instance.AddLife(1);
             CompleteWord.SetActive(true);
@@ -758,7 +743,7 @@ namespace SweetSugar.Scripts.Core
                 Score += limit * Random.Range(500, 3000) / levelData.colorLimit;
                 CheckStars();
                 skipWin = false;
-                Destroy(tapToSkip);
+                //Destroy(tapToSkip);
             }
 
             if (PlayerPrefs.GetInt($"Level.{currentLevel:000}.StarsCount", 0) < stars)
@@ -774,14 +759,6 @@ namespace SweetSugar.Scripts.Core
             if (Application.isEditor)
                 Debug.Log("Level " + currentLevel + " score " + Score + " stars " + stars);
             CrosssceneData.win = true;
-#if PLAYFAB || GAMESPARKS
-            NetworkManager.dataManager.SetPlayerScore(currentLevel, Score);
-            NetworkManager.dataManager.SetPlayerLevel(currentLevel + 1);
-            NetworkManager.dataManager.SetStars(currentLevel);
-#elif EPSILON
-              NetworkManager.dataManager.SetPlayerLevel(new EpsilonLevel(currentLevel, stars, Score));
-#endif
-
             gameStatus = GameState.Win;
         }
 
@@ -848,9 +825,6 @@ namespace SweetSugar.Scripts.Core
             if (skipWin) yield break;
             yield return new WaitForSeconds(1f);
 
-            MenuReference.THIS.PreCompleteBanner.gameObject.SetActive(true);
-            yield return new WaitForSeconds(3);
-            MenuReference.THIS.PreCompleteBanner.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -1052,7 +1026,7 @@ namespace SweetSugar.Scripts.Core
 
                 SoundBase.Instance.PlayOneShot(SoundBase.Instance.noMatch);
 
-                NoMoreMatches.gameObject.SetActive(true);
+                Debug.Log("No matches");
                 gameStatus = GameState.RegenLevel;
                 yield return new WaitForSeconds(1);
                 ReGenLevel();
@@ -1130,7 +1104,7 @@ namespace SweetSugar.Scripts.Core
                         if (!withoutEffects)
                             item.GetComponent<Item>().DestroyItem();
                         else
-                            item.GetComponent<Item>().anim.SetTrigger("disappear");
+                            item.GetComponent<Item>().Amim.SetTrigger("disappear");
                     }
                 }
             }
@@ -1233,7 +1207,7 @@ namespace SweetSugar.Scripts.Core
                 var item = it[i];
                 if (item != null)
                 {
-                    item.anim.StopPlayback();
+                    item.Amim.StopPlayback();
                 }
             }
 

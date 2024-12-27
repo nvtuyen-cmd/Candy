@@ -165,8 +165,10 @@ namespace SweetSugar.Scripts.Items
             }
         }
         //animator component
-        [HideInInspector]
-        public Animator anim;
+        [SerializeField]
+        protected Animator anim;
+
+        public Animator Amim => anim;
         //gonna be destroy
         [HideInInspector] public bool destroying;
         //animation interface purpose
@@ -189,8 +191,6 @@ namespace SweetSugar.Scripts.Items
         [HideInInspector] public ItemForEditor itemForEditor;
         /// set this item Undestroyable for current combine
         public bool dontDestroyForThisCombine;
-        /// playable director for package animation
-        [HideInInspector] public PlayableDirector director;
         public GameObject plusTime;
         public GameObject plusTimeObj;
         
@@ -283,11 +283,14 @@ namespace SweetSugar.Scripts.Items
             }
         }
 
-        private void Awake()
+        private void OnValidate()
         {
             colorableComponent = GetComponent<IColorableComponent>();
-            director = GetComponent<PlayableDirector>();
             anim = GetComponent<Animator>();
+        }
+
+        private void Awake()
+        {
             instanceID = GetInstanceID();
             name = "item " + currentType + instanceID;
             itemAnimTransform = transform.childCount>0 ? transform.GetChild(0): transform;
@@ -602,7 +605,6 @@ namespace SweetSugar.Scripts.Items
             currentType == type1 && switchItem.currentType == type2 ||
             currentType == type2 && switchItem.currentType == type1;
 
-        /// Cloud effect animation for different direction levels
         public IEnumerator DirectionAnimation(Action callback)
         {
             GameObject itemPrefabObject = gameObject;
@@ -633,15 +635,9 @@ namespace SweetSugar.Scripts.Items
                 else
                     yield break;
                 yield return new WaitForFixedUpdate();
-                //            if (switchDirection != Vector3.zero)
-                //            {
-                //                itemPrefabObject.transform.localPosition = Vector3.zero;
-                //                yield break;
-                //            }
             }
         }
     
-        //Change type if necessary
         public void CheckAndChangeTypes()
         {
             var itemsTypeChange = field.GetItems();
@@ -655,14 +651,12 @@ namespace SweetSugar.Scripts.Items
             }
         }
 
-        //virtual method for bonus items
         public virtual void Check(Item item1, Item item2)
         {
 
         
         }
     
-        //bonus animation after switching
         public void BonusesAnimation(Item item1, Item item2)
         {
             var list = new[] {item1, item2};
@@ -812,8 +806,10 @@ namespace SweetSugar.Scripts.Items
         private Vector3 defaultTransformPosition;
         private Vector3 defaultTransformScale;
         private Quaternion defaultTransformRotation;
-        [HideInInspector]
-        public IColorableComponent colorableComponent;
+        [SerializeField]
+        private IColorableComponent colorableComponent;
+
+        public IColorableComponent ColorableComponent;
 
         ///falling item animation
         private IEnumerator FallingCor(List<Waypoint> waypoints, bool animate, Action callback = null)

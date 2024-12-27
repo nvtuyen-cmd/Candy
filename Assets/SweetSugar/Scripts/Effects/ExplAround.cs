@@ -41,7 +41,7 @@ namespace SweetSugar.Scripts.Effects
             foreach (Item item1 in array)
             {
                 if (item1 == null) continue;
-                item1.anim.enabled = false;
+                item1.Amim.enabled = false;
                 var seq = DOTween.Sequence();
                 Transform child = item1.transform.GetChild(0);
                 Vector3 transformPosition = child.transform.position;
@@ -63,7 +63,7 @@ namespace SweetSugar.Scripts.Effects
         void OnFinished(object o)
         {
             Item _item = ((GameObject)o).transform.parent.GetComponent<Item>();
-            _item.anim.enabled = true; //TODO: set destroying items animation false and true after
+            _item.Amim.enabled = true; //TODO: set destroying items animation false and true after
             _item.ResetAnimTransform();
 //            item.SetActive(false);
         }

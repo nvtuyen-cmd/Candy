@@ -151,10 +151,10 @@ namespace SweetSugar.Scripts.Level
          private void CreateTestItems()
          {
              // if (GetSquare(5, 5) == null) return;
-             GetSquare(3, 3).Item.colorableComponent.SetColor(0);
-             GetSquare(3, 4).Item.colorableComponent.SetColor(0);
-             GetSquare(4, 3).Item.colorableComponent.SetColor(0);
-             GetSquare(4, 4).Item.colorableComponent.SetColor(0);
+             GetSquare(3, 3).Item.ColorableComponent.SetColor(0);
+             GetSquare(3, 4).Item.ColorableComponent.SetColor(0);
+             GetSquare(4, 3).Item.ColorableComponent.SetColor(0);
+             GetSquare(4, 4).Item.ColorableComponent.SetColor(0);
          }
 
          /// <summary>
@@ -295,7 +295,7 @@ namespace SweetSugar.Scripts.Level
                  {
                      if (square.Item != null && square.Item.currentType == ItemsTypes.NONE) //|| !falling && square.item?.currentType != ItemsTypes.SPIRAL)
                      {
-                         square.Item.colorableComponent.RandomizeColor(colorGenerator);
+                         square.Item.ColorableComponent.RandomizeColor(colorGenerator);
                      }
                  }
              }

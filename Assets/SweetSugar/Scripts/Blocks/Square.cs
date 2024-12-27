@@ -558,7 +558,7 @@ namespace SweetSugar.Scripts.Blocks
             {
                 item = ObjectPooler.Instance.GetPooledObject(itemType.ToString(), this);
                 if(!noAnim)
-                    item?.GetComponent<Item>().anim?.SetTrigger("bonus_appear");
+                    item?.GetComponent<Item>().Amim?.SetTrigger("bonus_appear");
             }
             if (item == null)
             {

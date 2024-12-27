@@ -49,18 +49,10 @@ namespace SweetSugar.Scripts.Effects
 
         }
 
-        public void EnableMask(bool enable)
-        {
-            mask.SetActive(enable);
-        }
 
         public void StartTeleport(Item item, Action callback)
         {
-            // director.SetGenericBinding(key, item.itemAnimTransform.gameObject);
-            // if (item.itemAnimTransform.gameObject.GetComponent<Animator>() == null)
-            //     item.itemAnimTransform.gameObject.AddComponent<Animator>();
-            // item.anim.enabled = false;
-            // teleportEvent.SetActive(true);
+          
             director.Play();
             StartCoroutine(Wait(item, callback));
         }
@@ -68,8 +60,8 @@ namespace SweetSugar.Scripts.Effects
         IEnumerator Wait(Item item, Action callback)
         {
             yield return new WaitUntil(() => director.time >= endKey);
-            if (item?.anim != null)
-                item.anim.enabled = true;
+            if (item?.Amim != null)
+                item.Amim.enabled = true;
             if (callback != null) callback();
             yield return new WaitUntil(() => director.time >= _directorDuration || director.time == 0);
             // teleportEvent.SetActive(false);

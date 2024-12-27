@@ -114,26 +114,6 @@ namespace SweetSugar.Scripts.Core
             return string.Format("Level.{0:000}.StarsCount", number);
         }
 
-        public void ShowReward()
-        {
-            if (currentReward == RewardsType.GetGems)
-            {
-                ShowGemsReward(rewardedGems);
-            }
-            else if (currentReward == RewardsType.GetLifes)
-            {
-                RestoreLifes();
-            }
-            else if (currentReward == RewardsType.GetGoOn)
-            {
-                MenuReference.THIS.PreFailed.GetComponent<AnimationEventManager>().GoOnFailed();
-            }
-            else if(currentReward == RewardsType.FreeAction)
-            {
-            }
-
-            currentReward = RewardsType.NONE;
-        }
 
         public void ShowGemsReward(int amount)
         {
@@ -263,7 +243,6 @@ namespace SweetSugar.Scripts.Core
             LevelManager.THIS.LoadLevel();
             openLevel = num;
             CrosssceneData.openNextLevel = false;
-            MenuReference.THIS.MenuPlay.gameObject.SetActive(true);
         }
 
         static void ShowLeadboard(int levelNumber)

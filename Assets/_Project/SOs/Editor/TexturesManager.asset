@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664c613e3f57de14b823a5a5c2f66db6, type: 3}
+  m_Name: TexturesManager
+  m_EditorClassIdentifier: 
+  textures:
+  - id: 10000000
+    texture: {fileID: 2800000, guid: 77b43126d138e49389a0e2851a1bb0d3, type: 3}
