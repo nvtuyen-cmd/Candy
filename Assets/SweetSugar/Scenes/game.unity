@@ -221,8 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08155f1bcd94c404a9e2598976f46c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousAspect: 1.7777778
-  camera: {fileID: 511786107}
 --- !u!20 &511786107
 Camera:
   m_ObjectHideFlags: 0
@@ -490,11 +488,7 @@ MonoBehaviour:
   - {r: 0, g: 0.2509804, b: 0.7137255, a: 1}
   - {r: 0.68235296, g: 0.40784314, b: 0, a: 1}
   - {r: 0.07450981, g: 0.43529412, b: 0, a: 1}
-  gratzWords:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  gratzWords: []
   Level: {fileID: 1375642408}
   LevelsMap: {fileID: 1375642408}
   FieldsParent: {fileID: 1375642408}
